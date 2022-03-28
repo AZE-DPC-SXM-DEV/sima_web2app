@@ -1,0 +1,67 @@
+﻿@using Web2App.Models
+@model QrCodePostModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web2App</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto my-5">
+                <form action="@Url.Action("QrCodeGenerate","Home")" method="post">
+                    @Html.ValidationSummary()
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Operation Type</label>
+                        <select class="form-control" id="type" name="Type">
+                            <option value="Auth">Auth</option>
+                            <option value="Sign">Sign</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="operationId" class="form-label">OperationId</label>
+                        <input name="OperationId" value="@Model.OperationId" type="text" class="form-control" id="operationId" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="secret" class="form-label">Secret key</label>
+                        <input name="SecretKey" value="@Model.SecretKey" type="text" class="form-control" id="secret" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="clientId" class="form-label">Client Id</label>
+                        <input name="ClientId" value="@Model.ClientId" type="text" class="form-control" id="clientId" aria-describedby="emailHelp">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Nbf" class="form-label">NbfUTC</label>
+                        <input name="Start" type="date" class="form-control" id="NbfUTC" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Exp" class="form-label">ExpUTC</label>
+                        <input name="End" type="date" class="form-control" id="ExpUTC" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Icon" class="form-label">Icon</label>
+                        <input name="IconUri" value="@Model.IconUri" type="text" class="form-control" id="Icon" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Callback" class="form-label">Callback</label>
+                        <input name="CallBackUrl" value="@Model.CallBackUrl" type="text" class="form-control" id="Callback" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Assignee " class="form-label">Assignee </label>
+                        <input name="Assignee" value="@Model.Assignee" type="text" class="form-control" id="Assignee" placeholder="add fin codes with comma" aria-describedby="emailHelp">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
